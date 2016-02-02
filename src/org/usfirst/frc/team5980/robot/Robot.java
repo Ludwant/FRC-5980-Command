@@ -28,6 +28,8 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveSubsystem drive = new DriveSubsystem();
 	public static OI oi;
+	public static SensorInput sensors = new SensorInput();
+
 	CameraServer server = CameraServer.getInstance();
 
     Command autonomousCommand;
