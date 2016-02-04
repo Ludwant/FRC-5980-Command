@@ -7,11 +7,10 @@ public class RobotPID {
 	double totalError = 0;
 	double lastError = 0;
 	
-	public RobotPID(double kp, double ki, double kd, double target) {
+	public RobotPID(double kp, double ki, double kd) {
 		this.kp = kp;
 		this.ki = ki;
 		this.kd = kd;
-		this.target = target;
 	}
 	public void setTarget(double t) {
 		target = t;

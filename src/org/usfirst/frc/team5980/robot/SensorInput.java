@@ -20,40 +20,40 @@ public class SensorInput {
 			DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
 		}
 	}
-	public static float getYaw() {
+	public float getYaw() {
 		float yaw;
 		yaw = navx.getYaw();
-		return yaw;
+		return -yaw;
 	}
-	public static float getPitch() {
+	public float getPitch() {
 		float pitch;
 		pitch = navx.getPitch();
 		return pitch;
 	}
-	public static float getRoll() {
+	public float getRoll() {
 		float roll;
 		roll = navx.getRoll();
 		return roll;
 	}
-	public static void resetNavX() {
-		navx.reset();
+	public void resetYaw() {
+		navx.zeroYaw();
 	}
-	public static double getLeftEncoder() {
-		double encoderValue;
+	public int getLeftEncoder() {
+		int encoderValue;
 		encoderValue = leftEncoder.get();
 		return encoderValue;
 	}
-	public static double getRightEncoder() {
-		double encoderValue;
+	public int getRightEncoder() {
+		int encoderValue;
 		encoderValue = rightEncoder.get();
 		return encoderValue;
 	}
 	
-	public static void resetRightEncoder() {
+	public void resetRightEncoder() {
 		rightEncoder.reset();
 	}
 	
-	public static void resetLeftEncoder() {
+	public void resetLeftEncoder() {
 		leftEncoder.reset();
 	}
 }

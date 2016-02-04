@@ -8,11 +8,8 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team5980.robot.commands.ExampleCommand;
-import org.usfirst.frc.team5980.robot.subsystems.DriveSubsystem;
-import org.usfirst.frc.team5980.robot.subsystems.ExampleSubsystem;
-
-
+import org.usfirst.frc.team5980.robot.commands.*;
+import org.usfirst.frc.team5980.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -29,7 +26,6 @@ public class Robot extends IterativeRobot {
 	public static final DriveSubsystem drive = new DriveSubsystem();
 	public static OI oi;
 	public static SensorInput sensors = new SensorInput();
-
 	CameraServer server = CameraServer.getInstance();
 
     Command autonomousCommand;
@@ -73,8 +69,12 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
+    	sensors.resetYaw();
         autonomousCommand = (Command) chooser.getSelected();
-        
+        /*
+         * vvv ATTENTION! IF WE WANT TO USE THE CHOOSER, DELETE THE LINE BELOW vvv
+         */
+        autonomousCommand = new SimpleCommandGroup();
 		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
 		case "My Auto":

@@ -1,41 +1,49 @@
 package org.usfirst.frc.team5980.robot.commands;
 
 import org.usfirst.frc.team5980.robot.Robot;
-import org.usfirst.frc.team5980.robot.SensorInput;
+import org.usfirst.frc.team5980.robot.RobotPID;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
 /**
  *
  */
-public class DriveCommand extends Command {
-
-    public DriveCommand() {
+public class DriveForwardAuto extends Command {
+	RobotPID drivePID = new RobotPID(0.03, 0, 0);
+	int distance;
+	int encoderTarget;
+	double speed;
+	double heading;
+    public DriveForwardAuto(int distance, double speed, double heading) {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.drive);
+    	this.distance = distance;
+    	this.speed = speed;
+    	this.heading = heading;
+        requires(Robot.drive);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	encoderTarget = Robot.sensors.getRightEncoder() + distance;
+    	drivePID.setTarget(heading);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("Left Encoder", Robot.sensors.getLeftEncoder());
-    	SmartDashboard.putNumber("Right Encoder", Robot.sensors.getRightEncoder());
-    	Robot.drive.setDrivePower(-Robot.oi.joystickXbox.getRawAxis(1), -Robot.oi.joystickXbox.getRawAxis(5));
+    	double correction = drivePID.getCorrection(Robot.sensors.getYaw());
+    	Robot.drive.setDrivePower(speed-correction, speed+correction);
+    	SmartDashboard.putNumber("Encoder Value:", Robot.sensors.getRightEncoder());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.sensors.getRightEncoder() > encoderTarget;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.drive.setDrivePower(0, 0);
     }
 
     // Called when another command which requires one or more of the same
