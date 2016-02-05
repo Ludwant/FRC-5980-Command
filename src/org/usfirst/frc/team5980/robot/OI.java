@@ -2,6 +2,8 @@ package org.usfirst.frc.team5980.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 import org.usfirst.frc.team5980.robot.commands.ExampleCommand;
 
 /**
@@ -36,6 +38,9 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 	public Joystick joystickXbox = new Joystick(RobotMap.xboxUSBport);
+	Button grabberIn = new JoystickButton(joystickXbox, 5);
+	Button grabberOut = new JoystickButton(joystickXbox, 6);
+	
 	
 	
 }

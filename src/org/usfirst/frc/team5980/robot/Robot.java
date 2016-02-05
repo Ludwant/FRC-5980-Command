@@ -24,6 +24,7 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveSubsystem drive = new DriveSubsystem();
+	public static final BallGrabberSubsystem grabber = new BallGrabberSubsystem();
 	public static OI oi;
 	public static SensorInput sensors = new SensorInput();
 	CameraServer server = CameraServer.getInstance();
@@ -110,6 +111,10 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        
+        
+        oi.grabberIn.whileHeld(new BallGrabInCommand());
+        oi.grabberOut.whileHeld(new BallGrabOutCommand());
     }
     
     /**
