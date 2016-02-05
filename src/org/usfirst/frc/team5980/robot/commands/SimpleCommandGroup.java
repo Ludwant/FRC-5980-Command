@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5980.robot.commands;
 
+import org.usfirst.frc.team5980.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -8,8 +10,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class SimpleCommandGroup extends CommandGroup {
     
     public  SimpleCommandGroup() {
-    	addSequential(new DriveForwardAuto(5000, 0.5, 0));
-    	addSequential(new DriveForwardAuto(3000, 0.3, 10));
+    	addSequential(new DriveForwardAuto(30, 0.5, 0));
+    	addSequential(new RotateToHeading(Robot.sensors.getYaw()+90 , 0.3));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

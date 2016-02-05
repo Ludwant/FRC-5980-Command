@@ -2,49 +2,41 @@ package org.usfirst.frc.team5980.robot.commands;
 
 import org.usfirst.frc.team5980.robot.Robot;
 import org.usfirst.frc.team5980.robot.RobotPID;
-import org.usfirst.frc.team5980.robot.SensorInput;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class DriveForwardAuto extends Command {
-	RobotPID drivePID = new RobotPID(0.03, 0, 0);
-	int distance;
-	double encoderTarget;
+public class RotateToHeading extends Command {
+	RobotPID turnPID = new RobotPID(.05, 0 , 0);
+	float heading;
 	double speed;
-	double heading;
-    public DriveForwardAuto(int distance, double speed, double heading) {
+    public RotateToHeading(float heading, double speed) {
         // Use requires() here to declare subsystem dependencies
-    	this.distance = distance;
-    	this.speed = speed;
-    	this.heading = heading;
         requires(Robot.drive);
+        this.heading = heading;
+        this.speed = speed;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	encoderTarget = Robot.sensors.getRightEncoder() + distance * SensorInput.encoderCountsPerInch;
-    	drivePID.setTarget(heading);
+    	turnPID.setTarget(heading);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double correction = drivePID.getCorrection(Robot.sensors.getYaw());
-    	Robot.drive.setDrivePower(speed-correction, speed+correction);
-    	SmartDashboard.putNumber("Encoder Value:", Robot.sensors.getRightEncoder());
+    	double correction = turnPID.getCorrection(Robot.sensors.getYaw());
+    	Robot.drive.setDrivePower(speed+correction, speed-correction);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.sensors.getRightEncoder() > encoderTarget;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.drive.setDrivePower(0, 0);
     }
 
     // Called when another command which requires one or more of the same
