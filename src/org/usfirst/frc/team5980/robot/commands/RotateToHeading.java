@@ -26,13 +26,24 @@ public class RotateToHeading extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	// The correction is going to be a factor between -1 and 1
+    	//    that multiplies the speed.  Think of the correction as a percentage
+    	//    of the full speed, which you're calling "speed."  Since you want to 
+    	//    rotate (spin), you want the power to the two motors to be equal in 
+    	//    magnitude and opposite
     	double correction = turnPID.getCorrection(Robot.sensors.getYaw());
-    	Robot.drive.setDrivePower(speed+correction, speed-correction);
+    	if (Math.abs(correction) > 1) {
+    		if (correction > 1) correction = 1;
+    		else correction = -1;
+    	}
+    	Robot.drive.setDrivePower(-speed * correction, speed * correction);
+    	//Robot.drive.setDrivePower(speed+correction, speed-correction);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	// You need to determine when to finish the command!
+        return Math.abs(Robot.sensors.getYaw() - heading) < 2;
     }
 
     // Called once after isFinished returns true
