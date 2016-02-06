@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class SimpleCommandGroup extends CommandGroup {
     
     public  SimpleCommandGroup() {
-    	addSequential(new DriveForwardAuto(30, 0.5, 0));
+    	addSequential(new DriveForwardAuto(60, 0.5, 0));
     	addSequential(new RotateToHeading(Robot.sensors.getYaw()+15, 0.3));
         // Add Commands here:
         // e.g. addSequential(new Command1());

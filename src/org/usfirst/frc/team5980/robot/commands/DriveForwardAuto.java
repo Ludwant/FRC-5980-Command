@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class DriveForwardAuto extends Command {
 	RobotPID drivePID = new RobotPID(0.03, 0, 0);
+	RobotPID stopPID = new RobotPID(.0556 * SensorInput.encoderCountsPerInch, 0, 0);
 	int distance;
 	double encoderTarget;
 	double speed;
@@ -28,12 +29,17 @@ public class DriveForwardAuto extends Command {
     protected void initialize() {
     	encoderTarget = Robot.sensors.getRightEncoder() + distance * SensorInput.encoderCountsPerInch;
     	drivePID.setTarget(heading);
+    	stopPID.setTarget(encoderTarget);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double stopCorrection = stopPID.getCorrection(Robot.sensors.getRightEncoder());
+    	if(stopCorrection > 1) {
+    		stopCorrection = 1;
+    	}
     	double correction = drivePID.getCorrection(Robot.sensors.getYaw());
-    	Robot.drive.setDrivePower(speed-correction, speed+correction);
+    	Robot.drive.setDrivePower((speed-correction)*stopCorrection, (speed+correction)*stopCorrection);
     	SmartDashboard.putNumber("Encoder Value:", Robot.sensors.getRightEncoder());
     }
 
