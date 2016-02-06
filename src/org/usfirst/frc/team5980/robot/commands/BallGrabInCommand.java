@@ -37,5 +37,6 @@ public class BallGrabInCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.grabber.setGrabPower(0);
     }
 }

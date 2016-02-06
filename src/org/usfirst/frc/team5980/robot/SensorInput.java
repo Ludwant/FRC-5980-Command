@@ -4,6 +4,7 @@ package org.usfirst.frc.team5980.robot;
 
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
@@ -13,6 +14,8 @@ public class SensorInput {
 	static Encoder leftEncoder = new Encoder(0, 1);
 	static Encoder rightEncoder = new Encoder(2, 3);
 	static AHRS navx;
+	static DigitalInput liftExtendLimit = new DigitalInput(0);
+	static DigitalInput liftRetractLimit = new DigitalInput(1);
 	public SensorInput() {
 		try {
 			navx = new AHRS(SPI.Port.kMXP);
@@ -56,5 +59,11 @@ public class SensorInput {
 	
 	public void resetLeftEncoder() {
 		leftEncoder.reset();
+	}
+	public boolean getExtendLimitBool() {
+		return liftExtendLimit.get();
+	}
+	public boolean getRetractLimitBool() {
+		return liftRetractLimit.get();
 	}
 }

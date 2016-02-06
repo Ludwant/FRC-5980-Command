@@ -25,6 +25,7 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveSubsystem drive = new DriveSubsystem();
 	public static final BallGrabberSubsystem grabber = new BallGrabberSubsystem();
+	public static final LiftSubsystem lift = new LiftSubsystem();
 	public static OI oi;
 	public static SensorInput sensors = new SensorInput();
 	CameraServer server = CameraServer.getInstance();
@@ -113,10 +114,13 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         
         
-        oi.grabberIn.whenPressed(new BallGrabInCommand());
-        oi.grabberOut.whenPressed(new BallGrabOutCommand());
-        oi.grabberIn.whenReleased(new BallGrabStopCommand());
-        oi.grabberOut.whenReleased(new BallGrabStopCommand());
+        oi.grabberIn.whileHeld(new BallGrabInCommand());
+        oi.grabberOut.whileHeld(new BallGrabOutCommand());
+        oi.lowerLift.whileHeld(new LiftRetractCommand());
+        oi.raiseLift.whileHeld(new LiftExtendCommand());
+        
+        	
+        
     }
     
     /**
@@ -125,4 +129,5 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
     }
+   
 }
