@@ -7,12 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class BallGrabOutCommand extends Command {
+public class BallGrabStopCommand extends Command {
 
-    public BallGrabOutCommand() {
+    public BallGrabStopCommand() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.grabber);
+        requires(Robot.grabber);
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +20,7 @@ public class BallGrabOutCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.grabber.setGrabPower(1);
+    	Robot.grabber.setGrabPower(0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,8 +30,6 @@ public class BallGrabOutCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.grabber.setGrabPower(0);
-
     }
 
     // Called when another command which requires one or more of the same

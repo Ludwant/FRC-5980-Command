@@ -113,8 +113,10 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         
         
-        oi.grabberIn.whileHeld(new BallGrabInCommand());
-        oi.grabberOut.whileHeld(new BallGrabOutCommand());
+        oi.grabberIn.whenPressed(new BallGrabInCommand());
+        oi.grabberOut.whenPressed(new BallGrabOutCommand());
+        oi.grabberIn.whenReleased(new BallGrabStopCommand());
+        oi.grabberOut.whenReleased(new BallGrabStopCommand());
     }
     
     /**
