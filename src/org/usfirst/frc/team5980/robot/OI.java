@@ -38,10 +38,10 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 	public Joystick joystickXbox = new Joystick(RobotMap.xboxUSBport);
-	Button grabberIn = new JoystickButton(joystickXbox, 5);
-	Button grabberOut = new JoystickButton(joystickXbox, 6);
-	Button raiseLift = new JoystickButton(joystickXbox, 7);
-	Button lowerLift = new JoystickButton(joystickXbox, 8);
+	Button grabberIn = new JoystickButton(joystickXbox, 7);
+	Button grabberOut = new JoystickButton(joystickXbox, 8);
+	Button raiseLift = new JoystickButton(joystickXbox, 5);
+	Button lowerLift = new JoystickButton(joystickXbox, 6);
 	
 	
 	

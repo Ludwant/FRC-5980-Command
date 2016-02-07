@@ -14,8 +14,8 @@ public class SensorInput {
 	static Encoder leftEncoder = new Encoder(0, 1);
 	static Encoder rightEncoder = new Encoder(2, 3);
 	static AHRS navx;
-	static DigitalInput liftExtendLimit = new DigitalInput(0);
-	static DigitalInput liftRetractLimit = new DigitalInput(1);
+	static DigitalInput liftExtendLimit = new DigitalInput(4);
+	static DigitalInput liftRetractLimit = new DigitalInput(5);
 	public SensorInput() {
 		try {
 			navx = new AHRS(SPI.Port.kMXP);

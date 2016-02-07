@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5980.robot.subsystems;
 
-import org.usfirst.frc.team5980.robot.commands.LiftCommand;
+
 
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
