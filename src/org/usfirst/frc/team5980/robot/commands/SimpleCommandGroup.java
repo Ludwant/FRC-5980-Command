@@ -11,7 +11,7 @@ public class SimpleCommandGroup extends CommandGroup {
     
     public  SimpleCommandGroup() {
     	addSequential(new DriveForwardAuto(60, 0.5, 0));
-    	addSequential(new RotateToHeading(Robot.sensors.getYaw()+15, 0.3));
+    	addSequential(new RotateToHeading(15, 0.4));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

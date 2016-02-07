@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class DriveForwardAuto extends Command {
 	RobotPID drivePID = new RobotPID(0.03, 0, 0);
-	RobotPID stopPID = new RobotPID(.0556 * SensorInput.encoderCountsPerInch, 0, 0);
+	RobotPID stopPID = new RobotPID((1/2636), 0, 0);
 	int distance;
 	double encoderTarget;
 	double speed;

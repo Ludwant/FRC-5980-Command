@@ -112,15 +112,8 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        
-        
-        oi.grabberIn.whileHeld(new BallGrabInCommand());
-        oi.grabberOut.whileHeld(new BallGrabOutCommand());
-        oi.lowerLift.whileHeld(new LiftRetractCommand());
-        oi.raiseLift.whileHeld(new LiftExtendCommand());
-        
-        	
-        
+        SmartDashboard.putBoolean("Extend Limit Switch", sensors.getExtendLimitBool());
+        SmartDashboard.putBoolean("Retract Limit Switch:", sensors.getRetractLimitBool());	
     }
     
     /**
@@ -129,5 +122,4 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
     }
-   
 }

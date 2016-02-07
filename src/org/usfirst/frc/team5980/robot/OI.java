@@ -3,8 +3,13 @@ package org.usfirst.frc.team5980.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 
+import org.usfirst.frc.team5980.robot.commands.BallGrabInCommand;
+import org.usfirst.frc.team5980.robot.commands.BallGrabOutCommand;
 import org.usfirst.frc.team5980.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5980.robot.commands.LiftExtendCommand;
+import org.usfirst.frc.team5980.robot.commands.LiftRetractCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -38,10 +43,16 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 	public Joystick joystickXbox = new Joystick(RobotMap.xboxUSBport);
-	Button grabberIn = new JoystickButton(joystickXbox, 7);
-	Button grabberOut = new JoystickButton(joystickXbox, 8);
+	Button grabberIn = new JoystickButton(joystickXbox, 1);
+	Button grabberOut = new JoystickButton(joystickXbox, 2);
 	Button raiseLift = new JoystickButton(joystickXbox, 5);
 	Button lowerLift = new JoystickButton(joystickXbox, 6);
+	public OI() {
+		grabberIn.whileHeld(new BallGrabInCommand());
+		grabberOut.whileHeld(new BallGrabOutCommand());
+        lowerLift.whileHeld(new LiftRetractCommand());
+        raiseLift.whileHeld(new LiftExtendCommand());
+	}
 	
 	
 	

@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class RotateToHeading extends Command {
-	RobotPID turnPID = new RobotPID(.05, 0 , 0);
+	RobotPID turnPID = new RobotPID(.06, 0 , 0);
 	float heading;
 	double speed;
     public RotateToHeading(float heading, double speed) {
