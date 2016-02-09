@@ -2,6 +2,7 @@ package org.usfirst.frc.team5980.robot.subsystems;
 
 
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -11,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class LiftSubsystem extends Subsystem {
 	Victor liftMotor = new Victor(5);
+	
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

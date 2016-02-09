@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class LiftRetractCommand extends Command {
-
+	int encoderTarget = 5760;
     public LiftRetractCommand() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.lift);
@@ -20,17 +20,20 @@ public class LiftRetractCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.lift.setLiftPower(-0.5);
+    	
+    		Robot.lift.setLiftPower(-0.4);
+  
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !Robot.sensors.getRetractLimitBool();
+        return Robot.sensors.getLiftEncoder() < encoderTarget;
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	Robot.lift.setLiftPower(0);
+    	Robot.sensors.resetLiftEncoder();
     }
 
     // Called when another command which requires one or more of the same

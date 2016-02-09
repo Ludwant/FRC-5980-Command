@@ -13,9 +13,10 @@ public class SensorInput {
 	public static double encoderCountsPerInch = 1440/3.13/Math.PI;
 	static Encoder leftEncoder = new Encoder(0, 1);
 	static Encoder rightEncoder = new Encoder(2, 3);
+	static Encoder liftEncoder = new Encoder(4, 5);
 	static AHRS navx;
-	static DigitalInput liftExtendLimit = new DigitalInput(4);
-	static DigitalInput liftRetractLimit = new DigitalInput(5);
+	//static DigitalInput liftExtendLimit = new DigitalInput(4);
+	//static DigitalInput liftRetractLimit = new DigitalInput(5);
 	public SensorInput() {
 		try {
 			navx = new AHRS(SPI.Port.kMXP);
@@ -53,6 +54,10 @@ public class SensorInput {
 		return encoderValue;
 	}
 	
+	public int getLiftEncoder() {
+		return liftEncoder.get(); 
+	}
+	
 	public void resetRightEncoder() {
 		rightEncoder.reset();
 	}
@@ -60,10 +65,16 @@ public class SensorInput {
 	public void resetLeftEncoder() {
 		leftEncoder.reset();
 	}
+	
+	public void resetLiftEncoder() {
+		liftEncoder.reset();
+	}
+	/*
 	public boolean getExtendLimitBool() {
 		return liftExtendLimit.get();
 	}
 	public boolean getRetractLimitBool() {
 		return liftRetractLimit.get();
 	}
+	*/
 }
