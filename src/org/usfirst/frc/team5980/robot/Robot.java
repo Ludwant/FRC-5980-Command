@@ -26,6 +26,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveSubsystem drive = new DriveSubsystem();
 	public static final BallGrabberSubsystem grabber = new BallGrabberSubsystem();
 	public static final LiftSubsystem lift = new LiftSubsystem();
+	public static final ArmSubsystem arm = new ArmSubsystem();
 	public static OI oi;
 	public static SensorInput sensors = new SensorInput();
 	CameraServer server = CameraServer.getInstance();

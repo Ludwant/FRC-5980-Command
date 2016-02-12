@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
 
+import org.usfirst.frc.team5980.robot.commands.ArmLowerCommand;
+import org.usfirst.frc.team5980.robot.commands.ArmRaiseCommand;
 import org.usfirst.frc.team5980.robot.commands.BallGrabInCommand;
 import org.usfirst.frc.team5980.robot.commands.BallGrabOutCommand;
 import org.usfirst.frc.team5980.robot.commands.ExampleCommand;
@@ -47,11 +49,16 @@ public class OI {
 	Button grabberOut = new JoystickButton(joystickXbox, 2);
 	Button raiseLift = new JoystickButton(joystickXbox, 5);
 	Button lowerLift = new JoystickButton(joystickXbox, 6);
+	Button raiseArm = new JoystickButton(joystickXbox, 3);
+	Button lowerArm = new JoystickButton(joystickXbox, 4);
+	
 	public OI() {
 		grabberIn.whileHeld(new BallGrabInCommand());
 		grabberOut.whileHeld(new BallGrabOutCommand());
         lowerLift.whenPressed(new LiftRetractCommand());
         raiseLift.whenPressed(new LiftExtendCommand());
+        raiseArm.whileHeld(new ArmRaiseCommand());
+        lowerArm.whileHeld(new ArmLowerCommand());
 		
 	}
 	
