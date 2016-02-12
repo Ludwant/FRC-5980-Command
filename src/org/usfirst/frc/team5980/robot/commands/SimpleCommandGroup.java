@@ -10,8 +10,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class SimpleCommandGroup extends CommandGroup {
     
     public  SimpleCommandGroup() {
-    	addSequential(new DriveForwardAuto(60, 0.5, 0));
-    	addSequential(new RotateToHeading(15, 0.4));
+    	addSequential(new DriveForwardAuto(240, 0.5, 0));
+    	addSequential(new RotateToHeading(-60, 0.3));
+    	addSequential(new DriveForwardAuto(36, 0.5, -60));
+    	
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

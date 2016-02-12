@@ -12,7 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class DriveForwardAuto extends Command {
 	RobotPID drivePID = new RobotPID(0.03, 0, 0);
-	RobotPID stopPID = new RobotPID((1/2636), 0, 0);
+	RobotPID stopPID = new RobotPID(0.01, 0, 0);
+	RobotPID coordinatePID = new RobotPID(0.04, 0, 0);
 	int distance;
 	double encoderTarget;
 	double speed;
@@ -30,6 +31,7 @@ public class DriveForwardAuto extends Command {
     	encoderTarget = Robot.sensors.getRightEncoder() + distance * SensorInput.encoderCountsPerInch;
     	drivePID.setTarget(heading);
     	stopPID.setTarget(encoderTarget);
+    	coordinatePID.setTarget(0);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -39,13 +41,17 @@ public class DriveForwardAuto extends Command {
     		stopCorrection = 1;
     	}
     	double correction = drivePID.getCorrection(Robot.sensors.getYaw());
+    	if(heading == 0) {
+    		correction += coordinatePID.getCorrection(Robot.sensors.getY());
+    	}
     	Robot.drive.setDrivePower((speed-correction)*stopCorrection, (speed+correction)*stopCorrection);
     	SmartDashboard.putNumber("Encoder Value:", Robot.sensors.getRightEncoder());
+    	SmartDashboard.putNumber("LeftEncoder Value", Robot.sensors.getLeftEncoder());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.sensors.getRightEncoder() > encoderTarget;
+        return Robot.sensors.getRightEncoder() > encoderTarget-200;
     }
 
     // Called once after isFinished returns true

@@ -50,8 +50,8 @@ public class OI {
 	public OI() {
 		grabberIn.whileHeld(new BallGrabInCommand());
 		grabberOut.whileHeld(new BallGrabOutCommand());
-        lowerLift.whileHeld(new LiftRetractCommand());
-        raiseLift.whileHeld(new LiftExtendCommand());
+        lowerLift.whenPressed(new LiftRetractCommand());
+        raiseLift.whenPressed(new LiftExtendCommand());
 		
 	}
 	

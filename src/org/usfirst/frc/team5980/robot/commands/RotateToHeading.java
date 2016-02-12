@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class RotateToHeading extends Command {
-	RobotPID turnPID = new RobotPID(.06, 0 , 0);
+	RobotPID turnPID = new RobotPID(.1, 0 , 0);
+	long stopTime;
 	float heading;
 	double speed;
     public RotateToHeading(float heading, double speed) {
@@ -22,6 +23,7 @@ public class RotateToHeading extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	turnPID.setTarget(heading);
+    	stopTime = System.currentTimeMillis() + 3000;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -43,7 +45,9 @@ public class RotateToHeading extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// You need to determine when to finish the command!
-        return Math.abs(Robot.sensors.getYaw() - heading) < 2;
+    	
+        return Math.abs(Robot.sensors.getYaw() - heading) < 2 || 
+        		System.currentTimeMillis() > stopTime;
     }
 
     // Called once after isFinished returns true

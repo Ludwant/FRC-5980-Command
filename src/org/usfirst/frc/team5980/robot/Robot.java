@@ -96,7 +96,9 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
+    	sensors.updatePosition();
         Scheduler.getInstance().run();
+        
     }
 
     public void teleopInit() {
@@ -112,8 +114,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        SmartDashboard.putBoolean("Extend Limit Switch", sensors.getExtendLimitBool());
-        SmartDashboard.putBoolean("Retract Limit Switch:", sensors.getRetractLimitBool());	
+        	
     }
     
     /**
