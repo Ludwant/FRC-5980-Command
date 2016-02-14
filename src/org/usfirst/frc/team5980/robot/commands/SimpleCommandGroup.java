@@ -11,8 +11,8 @@ public class SimpleCommandGroup extends CommandGroup {
     
     public  SimpleCommandGroup() {
     	addSequential(new DriveForwardAuto(240, 0.5, 0));
-    	addSequential(new RotateToHeading(-60, 0.3));
-    	addSequential(new DriveForwardAuto(36, 0.5, -60));
+    	//addSequential(new RotateToHeading(-60, 0.3));
+    	//addSequential(new DriveForwardAuto(50, 0.5, -60));
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

@@ -3,6 +3,7 @@ package org.usfirst.frc.team5980.robot.subsystems;
 import org.usfirst.frc.team5980.robot.commands.ArcadeDriveCommand;
 import org.usfirst.frc.team5980.robot.commands.DriveCommand;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;

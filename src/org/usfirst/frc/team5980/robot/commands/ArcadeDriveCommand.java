@@ -36,10 +36,10 @@ public class ArcadeDriveCommand extends Command {
     	else if (rightPower < -1) {
     		rightPower = -1;
     	}
-    	if (Math.abs(leftPower) < 0.1) {
+    	if (Math.abs(leftPower) < 0.15) {
     		leftPower = 0;
     	}
-    	if (Math.abs(rightPower) < 0.1) {
+    	if (Math.abs(rightPower) < 0.15) {
     		rightPower = 0;
     	}
     	Robot.drive.setDrivePower(leftPower, rightPower);
