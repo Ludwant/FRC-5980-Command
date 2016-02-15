@@ -21,8 +21,8 @@ public class DriveSubsystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     public void setDrivePower(double leftPower, double rightPower) {
-    	rightBackMotor.setInverted(true);
-    	rightFrontMotor.setInverted(true);
+    	leftBackMotor.setInverted(true);
+    	leftFrontMotor.setInverted(true);
     	leftBackMotor.set(leftPower);
     	leftFrontMotor.set(leftPower);
     	rightBackMotor.set(rightPower);
