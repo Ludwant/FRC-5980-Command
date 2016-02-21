@@ -40,23 +40,23 @@ public class OI {
     // Run the command while the button is being held down and interrupt it once
     // the button is released.
     // button.whileHeld(new ExampleCommand());
-    
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
-	public Joystick joystickXbox = new Joystick(RobotMap.xboxUSBport);
-	Button grabberIn = new JoystickButton(joystickXbox, 1);
-	Button grabberOut = new JoystickButton(joystickXbox, 2);
-	Button raiseLift = new JoystickButton(joystickXbox, 5);
-	Button lowerLift = new JoystickButton(joystickXbox, 6);
-	Button raiseArm = new JoystickButton(joystickXbox, 3);
-	Button lowerArm = new JoystickButton(joystickXbox, 4);
+	public Joystick joystickDrive = new Joystick(RobotMap.driveUSBport);
+	public Joystick joystickOperator = new Joystick(RobotMap.opUSBport);
+	Button grabberIn = new JoystickButton(joystickOperator, 1);
+	Button grabberOut = new JoystickButton(joystickOperator, 2);
+	Button raiseLift = new JoystickButton(joystickOperator, 5);
+	Button lowerLift = new JoystickButton(joystickOperator, 6);
+	Button raiseArm = new JoystickButton(joystickOperator, 3);
+	Button lowerArm = new JoystickButton(joystickOperator, 4);
 	
 	public OI() {
 		grabberIn.whileHeld(new BallGrabInCommand());
 		grabberOut.whileHeld(new BallGrabOutCommand());
-        lowerLift.whenPressed(new LiftRetractCommand());
-        raiseLift.whenPressed(new LiftExtendCommand());
+        lowerLift.whileHeld(new LiftRetractCommand());
+        raiseLift.whileHeld(new LiftExtendCommand());
         raiseArm.whileHeld(new ArmRaiseCommand());
         lowerArm.whileHeld(new ArmLowerCommand());
 		

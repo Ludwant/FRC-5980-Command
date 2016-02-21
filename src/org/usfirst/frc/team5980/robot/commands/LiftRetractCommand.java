@@ -21,14 +21,14 @@ public class LiftRetractCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		SmartDashboard.putNumber("lift encoder:", Robot.sensors.getLiftEncoder());
-    		Robot.lift.setLiftPower(-0.4);
+    		//SmartDashboard.putNumber("lift encoder:", Robot.sensors.getLiftEncoder());
+    		Robot.lift.setLiftPower(-1);
   
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.sensors.getLiftEncoder() > 0;
+        return false;//Robot.sensors.getLiftEncoder() > 0;
     }
 
     // Called once after isFinished returns true

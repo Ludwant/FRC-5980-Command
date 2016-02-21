@@ -20,10 +20,10 @@ public class ArcadeDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double throttle = -Robot.oi.joystickXbox.getRawAxis(1);
-    	double turning = -Robot.oi.joystickXbox.getRawAxis(4);
-    	double leftPower = throttle+turning;
-    	double rightPower = throttle-turning;
+    	double throttle = -Robot.oi.joystickDrive.getRawAxis(1);
+    	double turning = -Robot.oi.joystickDrive.getRawAxis(4);
+    	double leftPower = throttle-turning;
+    	double rightPower = throttle+turning;
     	if(leftPower >1) {
     		leftPower = 1;
     	}

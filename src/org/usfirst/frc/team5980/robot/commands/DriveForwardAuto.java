@@ -16,12 +16,13 @@ public class DriveForwardAuto extends Command {
 	RobotPID coordinatePID = new RobotPID(0.04, 0, 0);
 	int distance;
 	double encoderTarget;
-	double speed;
+	double maxSpeed;
 	double heading;
+	double speed = 0;
     public DriveForwardAuto(int distance, double speed, double heading) {
         // Use requires() here to declare subsystem dependencies
     	this.distance = distance;
-    	this.speed = speed;
+    	this.maxSpeed = speed;
     	this.heading = heading;
         requires(Robot.drive);
     }
@@ -43,6 +44,9 @@ public class DriveForwardAuto extends Command {
     	double correction = drivePID.getCorrection(Robot.sensors.getYaw());
     	if(heading == 0) {
     		correction += coordinatePID.getCorrection(Robot.sensors.getY());
+    	}
+    	if(speed < maxSpeed) {
+    		speed += 0.03;
     	}
     	Robot.drive.setDrivePower((speed-correction)*stopCorrection, (speed+correction)*stopCorrection);
     	SmartDashboard.putNumber("Encoder Value:", Robot.sensors.getRightEncoder());

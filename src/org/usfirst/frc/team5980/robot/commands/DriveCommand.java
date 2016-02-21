@@ -26,7 +26,7 @@ public class DriveCommand extends Command {
     protected void execute() {
     	SmartDashboard.putNumber("Left Encoder", Robot.sensors.getLeftEncoder());
     	SmartDashboard.putNumber("Right Encoder", Robot.sensors.getRightEncoder());
-    	Robot.drive.setDrivePower(-Robot.oi.joystickXbox.getRawAxis(1), -Robot.oi.joystickXbox.getRawAxis(5));
+    	Robot.drive.setDrivePower(-Robot.oi.joystickDrive.getRawAxis(1), -Robot.oi.joystickDrive.getRawAxis(5));
     }
 
     // Make this return true when this Command no longer needs to run execute()
