@@ -77,10 +77,10 @@ public class Robot extends IterativeRobot {
         /*
          * vvv ATTENTION! IF WE WANT TO USE THE CHOOSER, DELETE THE LINE BELOW vvv
          */
-        autonomousCommand = new SimpleCommandGroup();
+        //autonomousCommand = new SimpleCommandGroup();
         //Uncomment the line below and comment the line above for positions other than 1
         //autonomousCommand = new DriveForwardAuto(160, 0.7, 0);
-        /*
+        
 		String autoSelected = SmartDashboard.getString("Position1", "Everything Else");
 		switch(autoSelected) {
 		case "Position 1":
@@ -91,7 +91,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new DriveForwardAuto(135, 0.5, 0);
 			break;
 		} 
-    	*/
+    	
     	// schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
     }
