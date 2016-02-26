@@ -19,7 +19,7 @@ public class LiftSubsystem extends Subsystem {
     // here. Call these from Commands.
 	public void setLiftPower(double power) {
 		liftMotor.set(power);
-		SmartDashboard.putNumber("Motor power", power);
+		
 	}
 
     public void initDefaultCommand() {

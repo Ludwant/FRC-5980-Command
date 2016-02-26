@@ -49,8 +49,7 @@ public class DriveForwardAuto extends Command {
     		speed += 0.03;
     	}
     	Robot.drive.setDrivePower((speed-correction)*stopCorrection, (speed+correction)*stopCorrection);
-    	SmartDashboard.putNumber("Encoder Value:", Robot.sensors.getRightEncoder());
-    	SmartDashboard.putNumber("LeftEncoder Value", Robot.sensors.getLeftEncoder());
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

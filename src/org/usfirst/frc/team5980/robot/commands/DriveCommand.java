@@ -24,8 +24,6 @@ public class DriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("Left Encoder", Robot.sensors.getLeftEncoder());
-    	SmartDashboard.putNumber("Right Encoder", Robot.sensors.getRightEncoder());
     	Robot.drive.setDrivePower(-Robot.oi.joystickDrive.getRawAxis(1), -Robot.oi.joystickDrive.getRawAxis(5));
     }
 

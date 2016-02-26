@@ -27,8 +27,7 @@ public class DriveSubsystem extends Subsystem {
     	leftFrontMotor.set(leftPower);
     	rightBackMotor.set(rightPower);
     	rightFrontMotor.set(rightPower);
-    	SmartDashboard.putNumber("Left Motor Power:", leftPower);
-    	SmartDashboard.putNumber("Right Motor Power:", rightPower);
+    	
     }
     
     public void initDefaultCommand() {
