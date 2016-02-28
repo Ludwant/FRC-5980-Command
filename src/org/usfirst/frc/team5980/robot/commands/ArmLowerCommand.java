@@ -22,6 +22,7 @@ public class ArmLowerCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	//Raises the arm
     	Robot.arm.setArmPower(.8);
     }
 
@@ -37,6 +38,7 @@ public class ArmLowerCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	//Turns the arm off when the button is released
     	Robot.arm.setArmPower(0);
     }
 }

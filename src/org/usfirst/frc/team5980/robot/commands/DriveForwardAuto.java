@@ -11,7 +11,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class DriveForwardAuto extends Command {
+	//Command that uses PID and a coordinate system to drive forward straight 
+	//for a given distance at a given heading
 	RobotPID drivePID = new RobotPID(0.03, 0, 0);
+	//This PID is for a smooth stop
 	RobotPID stopPID = new RobotPID(0.01, 0, 0);
 	RobotPID coordinatePID = new RobotPID(0.04, 0, 0);
 	int distance;

@@ -43,6 +43,7 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
+	//Making the joysticks and buttons
 	public Joystick joystickDrive = new Joystick(RobotMap.driveUSBport);
 	public Joystick joystickOperator = new Joystick(RobotMap.opUSBport);
 	Button grabberIn = new JoystickButton(joystickOperator, 1);
@@ -53,6 +54,7 @@ public class OI {
 	Button lowerArm = new JoystickButton(joystickOperator, 4);
 	
 	public OI() {
+		//Setting the buttons to control the motors with the commands
 		grabberIn.whileHeld(new BallGrabInCommand());
 		grabberOut.whileHeld(new BallGrabOutCommand());
         lowerLift.whileHeld(new LiftRetractCommand());

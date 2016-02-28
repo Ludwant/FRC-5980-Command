@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class DriveSubsystem extends Subsystem {
+	//initializes motors for drive train
     Victor leftBackMotor = new Victor(0);
     Victor leftFrontMotor = new Victor(1);
     Victor rightBackMotor = new Victor(2);

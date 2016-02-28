@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
+	//initializing subsystems and cameras
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveSubsystem drive = new DriveSubsystem();
 	public static final BallGrabberSubsystem grabber = new BallGrabberSubsystem();
@@ -42,8 +42,8 @@ public class Robot extends IterativeRobot {
     	
 		oi = new OI();
         chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", new ExampleCommand());
-//        chooser.addObject("My Auto", new MyAutoCommand());
+        chooser.addDefault("Position 1", new SimpleCommandGroup());
+        chooser.addObject("Everything Else", new DriveForwardAuto(135, 0.5, 0));
         SmartDashboard.putData("Auto mode", chooser);
         server.setQuality(50);
         server.startAutomaticCapture("cam0");
@@ -72,6 +72,7 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
+    	//resetting the yaw of the NavX
     	sensors.resetYaw();
         autonomousCommand = (Command) chooser.getSelected();
         /*
@@ -80,7 +81,7 @@ public class Robot extends IterativeRobot {
         //autonomousCommand = new SimpleCommandGroup();
         //Uncomment the line below and comment the line above for positions other than 1
         //autonomousCommand = new DriveForwardAuto(160, 0.7, 0);
-        
+        /*
 		String autoSelected = SmartDashboard.getString("Position1", "Everything Else");
 		switch(autoSelected) {
 		case "Position 1":
@@ -91,7 +92,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new DriveForwardAuto(135, 0.5, 0);
 			break;
 		} 
-    	
+    	*/
     	// schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
     }

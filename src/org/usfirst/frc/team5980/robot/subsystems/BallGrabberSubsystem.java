@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class BallGrabberSubsystem extends Subsystem {
-    
+    //initializes motor for ball grabber
     Victor ballGrabMotor = new Victor(4);
     
     public void setGrabPower(double power)

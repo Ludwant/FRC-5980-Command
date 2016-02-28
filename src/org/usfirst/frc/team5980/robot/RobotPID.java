@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5980.robot;
 
 public class RobotPID {
+	//This is a class for using PID. This enables things to be smoothed out
 	double kp, ki, kd;
 	double target;
 	double alpha = 0.8;

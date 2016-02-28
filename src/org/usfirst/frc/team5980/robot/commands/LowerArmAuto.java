@@ -16,21 +16,26 @@ public class LowerArmAuto extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	stopTime = System.currentTimeMillis() + 2500;
+    	//Sets a variable for 2 seconds ahead
+    	stopTime = System.currentTimeMillis() + 2000;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.arm.setArmPower(-0.1);
+    	//Sets the arm to lower
+    	Robot.arm.setArmPower(-0.3);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	//Checks whether the time is less than 2 seconds in the future. This makes it so 
+    	//the motor turns off after 2 seconds
         return stopTime < System.currentTimeMillis();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	//turns off the arm
     	Robot.arm.setArmPower(0);
     }
 

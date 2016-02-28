@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ArcadeDriveCommand extends Command {
-
+	//Command for using Arcade drive with the drive train
     public ArcadeDriveCommand() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.drive);
@@ -20,6 +20,7 @@ public class ArcadeDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	//Gets the joystick values and makes the left one the throttle and the right one turning
     	double throttle = -Robot.oi.joystickDrive.getRawAxis(1);
     	double turning = -Robot.oi.joystickDrive.getRawAxis(4);
     	double leftPower = throttle-turning;

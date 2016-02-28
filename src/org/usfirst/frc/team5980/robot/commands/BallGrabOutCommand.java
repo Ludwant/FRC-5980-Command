@@ -21,6 +21,7 @@ public class BallGrabOutCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	//Turns the motor on
     	Robot.grabber.setGrabPower(1);
     }
 
@@ -38,6 +39,7 @@ public class BallGrabOutCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	//turns the motor off when button is released
     	Robot.grabber.setGrabPower(0);
     }
 }

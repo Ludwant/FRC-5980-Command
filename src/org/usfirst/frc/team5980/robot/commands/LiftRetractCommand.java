@@ -21,6 +21,7 @@ public class LiftRetractCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	//turns motor on 
     		//SmartDashboard.putNumber("lift encoder:", Robot.sensors.getLiftEncoder());
     		Robot.lift.setLiftPower(-1);
   
@@ -40,6 +41,7 @@ public class LiftRetractCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	//Turns motor off when button is released
     	Robot.lift.setLiftPower(0);
     }
 }

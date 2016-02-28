@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class ArmSubsystem extends Subsystem {
-    
+    //Initializes motor for the arm
 	Victor armMotor = new Victor(6);
 	
 	public void setArmPower(double power)

@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class LiftSubsystem extends Subsystem {
+	//Initializes motor for lift
 	Victor liftMotor = new Victor(5);
 	
     

@@ -24,6 +24,7 @@ public class DriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	//Sets the motor power to the reversed joystick values: Tank Drive
     	Robot.drive.setDrivePower(-Robot.oi.joystickDrive.getRawAxis(1), -Robot.oi.joystickDrive.getRawAxis(5));
     }
 
