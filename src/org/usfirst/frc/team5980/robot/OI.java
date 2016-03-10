@@ -12,6 +12,7 @@ import org.usfirst.frc.team5980.robot.commands.BallGrabOutCommand;
 import org.usfirst.frc.team5980.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5980.robot.commands.LiftExtendCommand;
 import org.usfirst.frc.team5980.robot.commands.LiftRetractCommand;
+import org.usfirst.frc.team5980.robot.commands.RotateToHeading;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -46,6 +47,7 @@ public class OI {
 	//Making the joysticks and buttons
 	public Joystick joystickDrive = new Joystick(RobotMap.driveUSBport);
 	public Joystick joystickOperator = new Joystick(RobotMap.opUSBport);
+	Button turnToGoal = new JoystickButton(joystickDrive, 5);
 	Button grabberIn = new JoystickButton(joystickOperator, 1);
 	Button grabberOut = new JoystickButton(joystickOperator, 2);
 	Button raiseLift = new JoystickButton(joystickOperator, 5);
@@ -61,7 +63,7 @@ public class OI {
         raiseLift.whileHeld(new LiftExtendCommand());
         raiseArm.whileHeld(new ArmRaiseCommand());
         lowerArm.whileHeld(new ArmLowerCommand());
-		
+		//turnToGoal.whenPressed(new RotateToHeading(60, 0.5));
 	}
 	
 	
