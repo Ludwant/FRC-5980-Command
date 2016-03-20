@@ -7,15 +7,20 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class SimpleCommandGroup extends CommandGroup {
+public class ImprovedAuto extends CommandGroup {
     
-    public  SimpleCommandGroup() {
+    public  ImprovedAuto() {
     	//Command Group for Position 1
     	addParallel(new LowerArmAuto());
-    	addSequential(new DriveForwardAuto(231, 0.55, 0));
-    	addSequential(new RotateToHeading(-59, 0.3));
-    	addSequential(new DriveForwardAuto(120, 0.5, -60));
+    	addSequential(new DriveForwardAuto(227, 0.7, 0));
+    	addSequential(new RotateToHeading(-59, 0.4));
+    	addSequential(new DriveForwardAuto(120, 0.7, -60));
     	addSequential(new BallShootAutonomous());
+    	//addParallel(new RaiseArmAuto());
+    	addSequential(new RotateToHeading(120, 0.5));
+    	addSequential(new DriveForwardAuto(120, 0.7, 120));
+    	addSequential(new RotateToHeading(180, 0.5));
+    	addSequential(new DriveForwardAuto(231, 0.7, 180));
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

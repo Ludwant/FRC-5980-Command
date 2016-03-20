@@ -7,22 +7,21 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class BallShootAutonomous extends Command {
+public class RaiseArmAuto extends Command {
 	double stopTime;
-    public BallShootAutonomous() {
+    public RaiseArmAuto() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.grabber);
+        requires(Robot.arm);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	stopTime = System.currentTimeMillis() + 1500;
+    	stopTime = System.currentTimeMillis() + 2000;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Turns the motor on 
-    	Robot.grabber.setGrabPower(-1);
+    	Robot.arm.setArmPower(0.3);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,14 +31,12 @@ public class BallShootAutonomous extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	//turns the motor off 
-    	Robot.grabber.setGrabPower(0);
+    	Robot.arm.setArmPower(0);
+
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	//turns the motor off when command is interrupted
-    	Robot.grabber.setGrabPower(0);
     }
 }

@@ -42,8 +42,10 @@ public class Robot extends IterativeRobot {
     	
 		oi = new OI();
         chooser = new SendableChooser();
+        chooser.addObject("Improved Auto", new ImprovedAuto());
         chooser.addDefault("Position 1", new SimpleCommandGroup());
         chooser.addObject("Everything Else", new DriveForwardAuto(135, 0.5, 0));
+        chooser.addObject("Cheval De Frise", new ChevalDeFriseAuto());
         SmartDashboard.putData("Auto mode", chooser);
         server.setQuality(50);
         server.startAutomaticCapture("cam0");

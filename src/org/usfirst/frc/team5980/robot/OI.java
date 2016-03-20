@@ -12,6 +12,7 @@ import org.usfirst.frc.team5980.robot.commands.BallGrabOutCommand;
 import org.usfirst.frc.team5980.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5980.robot.commands.LiftExtendCommand;
 import org.usfirst.frc.team5980.robot.commands.LiftRetractCommand;
+import org.usfirst.frc.team5980.robot.commands.RaiseArmAuto;
 import org.usfirst.frc.team5980.robot.commands.RotateToHeading;
 
 /**
@@ -63,6 +64,7 @@ public class OI {
         raiseLift.whileHeld(new LiftExtendCommand());
         raiseArm.whileHeld(new ArmRaiseCommand());
         lowerArm.whileHeld(new ArmLowerCommand());
+        raiseLift.whileHeld(new RaiseArmAuto());
 		//turnToGoal.whenPressed(new RotateToHeading(60, 0.5));
 	}
 	
