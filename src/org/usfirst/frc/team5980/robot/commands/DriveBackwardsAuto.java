@@ -5,14 +5,11 @@ import org.usfirst.frc.team5980.robot.RobotPID;
 import org.usfirst.frc.team5980.robot.SensorInput;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class DriveForwardAuto extends Command {
-	//Command that uses PID and a coordinate system to drive forward straight 
-	//for a given distance at a given heading
+public class DriveBackwardsAuto extends Command {
 	RobotPID drivePID = new RobotPID(0.03, 0, 0);
 	//This PID is for a smooth stop
 	RobotPID stopPID = new RobotPID(0.01, 0, 0);
@@ -22,9 +19,7 @@ public class DriveForwardAuto extends Command {
 	double maxSpeed;
 	double heading;
 	double speed = 0;
-	
-	
-    public DriveForwardAuto(int distance, double speed, double heading) {
+    public DriveBackwardsAuto(int distance, double speed, double heading) {
         // Use requires() here to declare subsystem dependencies
     	this.distance = distance;
     	this.maxSpeed = speed;
@@ -39,13 +34,14 @@ public class DriveForwardAuto extends Command {
     	stopPID.setTarget(encoderTarget);
     	coordinatePID.setTarget(0);
     }
+
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double stopCorrection = stopPID.getCorrection(Robot.sensors.getRightEncoder());
     	if(stopCorrection > 1) {
     		stopCorrection = 1;
     	}
-    	double correction = drivePID.getCorrection(Robot.sensors.getYaw());
+    	double correction = Math.abs(drivePID.getCorrection(Robot.sensors.getYaw()));
     	if(heading == 0) {
     		correction += coordinatePID.getCorrection(Robot.sensors.getY());
     	}
@@ -57,7 +53,7 @@ public class DriveForwardAuto extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.sensors.getRightEncoder() > encoderTarget-200;
+        return Robot.sensors.getRightEncoder() < encoderTarget+200;
     }
 
     // Called once after isFinished returns true

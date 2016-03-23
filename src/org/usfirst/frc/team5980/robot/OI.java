@@ -64,7 +64,7 @@ public class OI {
         raiseLift.whileHeld(new LiftExtendCommand());
         raiseArm.whileHeld(new ArmRaiseCommand());
         lowerArm.whileHeld(new ArmLowerCommand());
-        raiseLift.whileHeld(new RaiseArmAuto());
+        //raiseLift.whileHeld(new RaiseArmAuto());
 		//turnToGoal.whenPressed(new RotateToHeading(60, 0.5));
 	}
 	

@@ -23,7 +23,7 @@ public class ArmRaiseCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	//Turns the arm motor on
-    	Robot.arm.setArmPower(-0.3);
+    	Robot.arm.setArmPower(-0.7);
     	
     }
 

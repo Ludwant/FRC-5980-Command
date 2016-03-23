@@ -24,6 +24,6 @@ public class ChevalDeFriseAuto extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new DriveForwardAuto(-120, 0.5, 0));
+    	addSequential(new DriveBackwardsAuto(-120, 0.5, 0));
     }
 }
