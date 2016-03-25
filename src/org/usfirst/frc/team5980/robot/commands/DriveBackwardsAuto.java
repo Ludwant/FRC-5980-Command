@@ -41,15 +41,16 @@ public class DriveBackwardsAuto extends Command {
     	if(stopCorrection > 1) {
     		stopCorrection = 1;
     	}
-    	double correction = drivePID.getCorrection(Robot.sensors.getYaw());
+    	double correction = -drivePID.getCorrection(Robot.sensors.getYaw());
     	/*
     	if(heading == 0) {
     		correction += coordinatePID.getCorrection(Robot.sensors.getY());
     	}
+    	*/
     	if(speed < maxSpeed) {
     		speed += 0.03;
     	}
-    	*/
+    	
     	Robot.drive.setDrivePower((speed-correction)*stopCorrection, (speed+correction)*stopCorrection);
     }
 
