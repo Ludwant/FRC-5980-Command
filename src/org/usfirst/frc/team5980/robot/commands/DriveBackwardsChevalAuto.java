@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveBackwardsAuto extends Command {
+public class DriveBackwardsChevalAuto extends Command {
 	RobotPID drivePID = new RobotPID(0.03, 0, 0);
 	//This PID is for a smooth stop
 	RobotPID stopPID = new RobotPID(0.01, 0, 0);
@@ -19,12 +19,15 @@ public class DriveBackwardsAuto extends Command {
 	double maxSpeed;
 	double heading;
 	double speed = 0;
-    public DriveBackwardsAuto(int distance, double speed, double heading) {
+    public DriveBackwardsChevalAuto(int distance, double speed, double heading) {
         // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	// Use requires() here to declare subsystem dependencies
     	this.distance = distance;
     	this.maxSpeed = speed;
     	this.heading = heading;
         requires(Robot.drive);
+        requires(Robot.arm);
     }
 
     // Called just before this Command runs the first time
@@ -53,12 +56,12 @@ public class DriveBackwardsAuto extends Command {
     	}
     	
     	Robot.drive.setDrivePower((speed-correction)*stopCorrection, (speed+correction)*stopCorrection);
+    	Robot.arm.setArmPower(-0.3);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.sensors.getRightEncoder() < encoderTarget+20;
-    }
+    	return Robot.sensors.getRightEncoder() < encoderTarget+20;    }
 
     // Called once after isFinished returns true
     protected void end() {

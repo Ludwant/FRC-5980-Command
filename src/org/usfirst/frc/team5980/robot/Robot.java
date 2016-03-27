@@ -44,8 +44,10 @@ public class Robot extends IterativeRobot {
         chooser = new SendableChooser();
         //chooser.addObject("Improved Auto", new ImprovedAuto());
         chooser.addDefault("Position 1", new SimpleCommandGroup());
-        chooser.addObject("Just-Drive-Forward-For-a-While Auto", new DriveForwardAuto(135, 0.5, 0));
+        chooser.addObject("Faster Position 1", new ImprovedAuto());
+        chooser.addObject("Just-Drive-Forward-For-a-While Auto", new DriveForwardAuto(155, 1, 0));
         chooser.addObject("Portcullis Auto", new ChevalDeFriseAuto());
+        chooser.addObject("Cheval de Frise Auto", new ChevalAuto());
         chooser.addObject("Nothing", new NothingAuto());
         SmartDashboard.putData("Auto mode", chooser);
         server.setQuality(50);

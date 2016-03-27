@@ -7,32 +7,32 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RaiseArmAuto extends Command {
+public class LowerArmChevalAuto extends Command {
 	double stopTime;
-    public RaiseArmAuto() {
+    public LowerArmChevalAuto() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.arm);
+        // eg. requires(chassis);
+    	requires(Robot.arm);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	stopTime = System.currentTimeMillis() + 1000;
+    	stopTime = System.currentTimeMillis() + 2000;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.arm.setArmPower(0.3);
+    	Robot.arm.setArmPower(-0.1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return stopTime < System.currentTimeMillis();
+    	return stopTime < System.currentTimeMillis();
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	Robot.arm.setArmPower(0);
-
     }
 
     // Called when another command which requires one or more of the same

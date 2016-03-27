@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class ChevalDeFriseAuto extends CommandGroup {
+public class ChevalAuto extends CommandGroup {
     
-    public  ChevalDeFriseAuto() {
+    public  ChevalAuto() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,7 +24,8 @@ public class ChevalDeFriseAuto extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addParallel(new LowerArmAuto());
-    	addSequential(new DriveBackwardsAuto(-155, 0.5, 0));
+    	addSequential(new DriveBackwardsAuto(-47, 0.5, 0));
+    	addSequential(new LowerArmAuto());
+    	addSequential(new DriveBackwardsAuto(-105, 0.7, 0));
     }
 }
