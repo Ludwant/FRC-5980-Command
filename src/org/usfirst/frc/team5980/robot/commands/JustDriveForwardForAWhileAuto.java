@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class PortcullisPosition5Auto extends CommandGroup {
+public class JustDriveForwardForAWhileAuto extends CommandGroup {
     
-    public  PortcullisPosition5Auto() {
+    public  JustDriveForwardForAWhileAuto() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,12 +24,7 @@ public class PortcullisPosition5Auto extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addParallel(new LowerArmAuto());
-    	addSequential(new DriveBackwardsAuto(-150, 0.5, 0));
-    	addParallel(new RaiseArmAuto());
-    	addSequential(new DriveForwardAuto(-100, 0.5, 0));
-    	addSequential(new RotateToHeading(-120, 0.5));
-    	addSequential(new DriveForwardAuto(80, 0.5, -120));
-    	addSequential(new BallShootAutonomous());
+    	addParallel(new RunArmAuto());
+    	addSequential(new DriveForwardAuto(200, 1, 0));
     }
 }

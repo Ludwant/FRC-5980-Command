@@ -7,38 +7,35 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ArmLowerCommand extends Command {
-
-    public ArmLowerCommand() {
+public class RunArmAuto extends Command {
+	double stopTime;
+    public RunArmAuto() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	
-    	requires(Robot.arm);
+        requires(Robot.arm);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	stopTime = System.currentTimeMillis() + 5000;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Raises the arm
-    	Robot.arm.setArmPower(.5);
+    	Robot.arm.setArmPower(0.05);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return stopTime < System.currentTimeMillis();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.arm.setArmPower(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	//Turns the arm off when the button is released
-    	Robot.arm.setArmPower(0);
     }
 }
