@@ -22,7 +22,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 	//initializing subsystems and cameras
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveSubsystem drive = new DriveSubsystem();
 	public static final BallGrabberSubsystem grabber = new BallGrabberSubsystem();
 	public static final LiftSubsystem lift = new LiftSubsystem();
