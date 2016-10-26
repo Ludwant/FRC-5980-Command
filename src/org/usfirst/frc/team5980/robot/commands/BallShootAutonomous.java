@@ -4,7 +4,7 @@ import org.usfirst.frc.team5980.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
+/*
  *
  */
 public class BallShootAutonomous extends Command {
@@ -16,7 +16,7 @@ public class BallShootAutonomous extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	stopTime = System.currentTimeMillis() + 1500;
+    	stopTime = System.currentTimeMillis() + 1000;
     }
 
     // Called repeatedly when this Command is scheduled to run

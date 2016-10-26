@@ -9,7 +9,7 @@ import org.usfirst.frc.team5980.robot.commands.ArmLowerCommand;
 import org.usfirst.frc.team5980.robot.commands.ArmRaiseCommand;
 import org.usfirst.frc.team5980.robot.commands.BallGrabInCommand;
 import org.usfirst.frc.team5980.robot.commands.BallGrabOutCommand;
-import org.usfirst.frc.team5980.robot.commands.ExampleCommand;
+
 import org.usfirst.frc.team5980.robot.commands.LiftExtendCommand;
 import org.usfirst.frc.team5980.robot.commands.LiftRetractCommand;
 import org.usfirst.frc.team5980.robot.commands.RaiseArmAuto;

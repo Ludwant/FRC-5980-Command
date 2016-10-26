@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 	//initializing subsystems and cameras
+	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveSubsystem drive = new DriveSubsystem();
 	public static final BallGrabberSubsystem grabber = new BallGrabberSubsystem();
 	public static final LiftSubsystem lift = new LiftSubsystem();
@@ -55,6 +56,7 @@ public class Robot extends IterativeRobot {
         chooser.addObject("Cheval Position 4 Auto", new ChevalPosition4Auto());
         chooser.addObject("Cheval Position 3 Auto", new ChevalPosition3Auto());
         chooser.addObject("Cheval Position 2 Auto", new ChevalPosition2Auto());
+        chooser.addObject("Low Bar Auto with Backing Off", new LowBarAutoWithBackOut());
         chooser.addObject("Nothing", new NothingAuto());
         SmartDashboard.putData("Auto mode", chooser);
         server.setQuality(50);

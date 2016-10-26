@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class LiftExtendCommand extends Command {
-	int encoderTarget = -5760;
+	//int encoderTarget = -5760;
     public LiftExtendCommand() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.lift);
